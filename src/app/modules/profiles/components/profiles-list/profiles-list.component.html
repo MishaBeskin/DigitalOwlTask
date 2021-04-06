@@ -1,0 +1,29 @@
+<div [ngClass]="isNoUserSelected == true ? 'widthTable' : 'widthTable50'" class="inline container" style="margin-top: 10px;">
+  <table   datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped hover">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <span  class="position-spiner-tables" *ngIf="isLoading"><i class="fas fa-spin fa-3x fa-circle-notch"></i></span>
+    <tr [hidden]="isLoading" class="mousePointer" (click)="openProfile(profile)" *ngFor="let profile of profiles">
+      <td>
+        {{ profile.name }}
+      </td>
+      <td>
+        {{ profile.email }}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="inline" [hidden]="isNoUserSelected">
+  <p>name:{{profile.name}}</p>
+  <p>username:{{profile.username}}</p>
+  <p>email:{{profile.email}}</p>
+  <p>phone:{{profile.phone}}</p>
+</div>
+
+
